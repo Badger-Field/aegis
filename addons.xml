@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.video.aegis" name="Aegis Build" version="0.1.20" provider-name="Aegis">
+<addons><addon id="plugin.video.aegis" name="Aegis Build" version="0.1.21" provider-name="Aegis">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
     <import addon="script.module.aegis.netguard" version="0.1.0" />
