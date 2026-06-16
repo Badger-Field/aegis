@@ -1,0 +1,431 @@
+<?xml version='1.0' encoding='utf-8'?>
+<addons><addon id="plugin.video.aegis" name="Aegis Build" version="0.1.18" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+    <import addon="script.module.aegis.netguard" version="0.1.0" />
+    <import addon="script.module.aegis.vault" version="0.1.0" />
+    <import addon="script.module.aegis.tvhub" version="0.1.3" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Secure orchestrator for Aegis debrid addons.</summary>
+    <description lang="en_GB">Unified launcher and policy surface for Aegis curated addons.</description>
+    <platform>all</platform>
+    <license>GPL-2.0-or-later</license>
+    <source>https://github.com/systechs/aegis-build</source>
+  </extension>
+</addon><addon id="plugin.video.aegis.tve" name="Aegis TVE" version="0.1.0" provider-name="TemplateMechanics">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="script.module.requests" version="2.31.0" />
+    <import addon="script.module.aegis.vault" version="0.1.0" />
+    <import addon="script.module.aegis.netguard" version="0.1.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Aegis TV Everywhere — discover-and-auth platform for cable sports</summary>
+    <description lang="en_GB">Generic TV-Everywhere client for North American (and eventually UK) cable sports services that authenticate via Adobe Pass SAML — Sportsnet Now (CA), ESPN / Fox Sports / NBC Sports / TNT / CBS Sports (US), and others. Credentials encrypted in the Aegis Vault. Adobe Pass requestor_id and client_version values are discovered at runtime from each provider's own web player so the addon self-heals when those values rotate, eliminating the maintenance burden of legacy hardcoded TVE addons.</description>
+    <news>
+      0.1.0 — initial Aegis TVE platform MVP.
+    </news>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GPL-3.0-or-later</license>
+    <website>https://github.com/TemplateMechanics/aegis</website>
+    <source>https://github.com/TemplateMechanics/aegis</source>
+  </extension>
+</addon><addon id="plugin.video.umbrella" name="Umbrella" provider-name="Umbrella" version="6.7.73">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.requests" />
+		<import addon="plugin.video.youtube" optional="true" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="umbrella.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="resources\lib\context\addtoLibrary.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Add to Library</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.addtoLibrary)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\addtoFavourite.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Add/Remove Favourite</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.addtoFavourite)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\artworkCustomize.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Customize Artwork</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.artworkCustomize)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,season)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\playTrailer.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Play Trailer</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.playTrailer)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\playTrailerSelect.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Play Trailer (Select)</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.playTrailerSelect)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\traktManager.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Trakt Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.traktManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\mdblistManager.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]MDBList Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.mdblistManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\simklManager.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]SimKL Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.simklManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\tmdbListManager.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]TMDB List Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.tmdbListManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\tmdbWatchlist.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]TMDb Watchlist</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.tmdbWatchlist)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\clearProviders.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Clear Providers</label>
+				<visible>
+					[!String.IsEmpty(Window(home).Property(context.umbrella.clearProviders)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]] |
+					[String.Contains(Container.FolderPath,videodb://) +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="resources\lib\context\clearBookmark.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Clear Item Bookmark</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.clearBookmark)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					ListItem.IsResumable +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\rescrape.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Rescrape Item</label>
+				<visible>
+					[!String.IsEmpty(Window(home).Property(context.umbrella.rescrape)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="resources\lib\context\libMdblistManager.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]MDBList Watchlist Lib</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.libMdblistManager)) +
+					[String.Contains(Container.FolderPath,videodb://) | String.Contains(Container.ListItem.FolderPath,videodb://)] +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\addLibtoFavourite.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Add/Remove Favourite</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.addLibtoFavourite)) +
+					[String.Contains(Container.FolderPath,videodb://) | String.Contains(Container.ListItem.FolderPath,videodb://)] +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\libRescrape.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Rescrape Lib Item</label>
+				<visible>
+					[String.Contains(Container.FolderPath,videodb://) | String.Contains(Container.ListItem.FolderPath,videodb://)] +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\playFromHere.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Play from here</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.playFromHere)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+			<item library="resources\lib\context\autoPlay.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Auto Play</label>
+				<visible>
+					String.IsEmpty(Window(home).Property(umbrella.autoPlay.enabled)) +
+					!String.IsEmpty(Window(home).Property(context.umbrella.autoPlay)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\sourceSelect.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Source Select</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(umbrella.autoPlay.enabled)) +
+					!String.IsEmpty(Window(home).Property(context.umbrella.sourceSelect)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\findSimilar.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Find Similar</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.findSimilar)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\browseSeries.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Browse Series</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.browseSeries)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\browseEpisodes.py">
+				<label>$INFO[Window(home).Property(context.umbrella.showUmbrella)]Browse Episodes</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.browseEpisodes)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+		</menu>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="startup" />
+	<extension point="xbmc.python.module" library="resources/lib/" />
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>true</reuselanguageinvoker>
+		<summary lang="en">[B]Umbrella[/B] - We do not host any of the contents streamed</summary>
+		<description lang="en">[B]Umbrella[/B][CR] This addon does not form part of the Kodi Media Centre. Please do not seek assistance with this addon from any of the Official Kodi Support Channels.[CR]The author does not host any of the content in this addon and takes no responsibility for content found. We do not know anything about a lab under Raccoon City. Umbrella is not actually an umbrella and will not shield you from rain.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum />
+		<website>https://umbrellaplug.github.io</website>
+		<source>https://raw.githubusercontent.com/umbrellaplug/umbrellaplug.github.io/</source>
+		<disclaimer lang="en">The author of this addon does not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/screenshots/screenshot001.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot002.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot003.jpg</screenshot>
+		</assets>
+		<news>
+[B]Update - v6.7.73 - May 13th, 2026 [/B]
+--[Change] Torbox moved to device auth. You will need to re-authorize.
+--[Change] Changed MDBList to use Device Auth now instead of apikey. Will need to re-authorize.
+--[Change] Added retry for Easynews. Also added option to enable/ disable seekable for easy news links in settings.
+--[Change] Added Torbox referral link to Torbox settings. Thank you to all who have referred.
+--[Change] Added "liked lists" from MDBList.
+--[Change] Moved Anime from getting list from imdb (no longer working) to use SIMKL trending daily file.
+		</news>
+	</extension>
+
+</addon><addon id="repository.aegis" name="Aegis Repository" version="0.1.0" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.addon" version="20.0.0" />
+  </requires>
+  <extension point="xbmc.addon.repository" name="Aegis Repository">
+    <dir minversion="21.0.0">
+      <info compressed="true">https://badger-field.github.io/aegis/addons.xml.gz</info>
+      <checksum>https://badger-field.github.io/aegis/addons.xml.gz.md5</checksum>
+      <datadir zip="true">https://badger-field.github.io/aegis/zips/</datadir>
+    </dir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Single-source HTTPS repository for Aegis Build.</summary>
+    <description lang="en_GB">Repository addon for signed, pinned Aegis releases.</description>
+    <platform>all</platform>
+    <license>GPL-2.0-or-later</license>
+    <source>https://github.com/systechs/aegis-build</source>
+  </extension>
+</addon><addon id="script.module.aegis.audit" name="Aegis Audit" version="0.1.0" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Static audit rules for Aegis vendored addons.</summary>
+    <description lang="en_GB">Detects high-risk patterns before addon publication.</description>
+    <platform>all</platform>
+    <license>GPL-2.0-or-later</license>
+  </extension>
+</addon><addon id="script.module.aegis.netguard" name="Aegis NetGuard" version="0.1.0" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+    <import addon="script.module.requests" version="2.31.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">HTTPS-only network utilities for Aegis.</summary>
+    <description lang="en_GB">Provides request wrappers with URL and log redaction policies.</description>
+    <platform>all</platform>
+    <license>GPL-2.0-or-later</license>
+  </extension>
+</addon><addon id="script.module.aegis.proxy" name="Aegis Proxy" version="0.1.0" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Local m3u8 proxy that strips SCTE-35 discontinuity tags for Aegis live-TV playback.</summary>
+    <description lang="en_GB">Eliminates the per-discontinuity decoder re-init stutter on Samsung TV+, Roku Channel, and Plex Live HLS streams by stripping EXT-X-DISCONTINUITY tags from manifests before they reach inputstream.ffmpegdirect.</description>
+    <platform>all</platform>
+    <license>GPL-2.0-or-later</license>
+  </extension>
+</addon><addon id="script.module.aegis.tvhub" name="Aegis Live-TV Hub" version="0.1.12" provider-name="Aegis">
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <license>GPL-2.0-or-later</license>
+    <language>en</language>
+    <summary>Aegis live-TV source registry, fetcher, and m3u aggregator.</summary>
+    <description>
+      Manages multiple live-TV sources (iptv-org, Famelack, user-supplied m3u),
+      fetches m3u/XMLTV feeds, and merges them into a single deduplicated stream.
+    </description>
+    <disclaimer>For use by Aegis build only.</disclaimer>
+    <source>https://github.com/systechs/aegis-build</source>
+    <forum>N/A</forum>
+    <email>N/A</email>
+  </extension>
+  <requires>
+    <import addon="script.module.aegis.vault" />
+    <import addon="script.module.aegis.netguard" />
+  </requires>
+</addon><addon id="script.module.aegis.vault" name="Aegis Vault" version="0.1.1" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Encrypted token vault for Aegis.</summary>
+    <description lang="en_GB">Stores OAuth credentials encrypted at rest.</description>
+    <platform>all</platform>
+    <license>GPL-2.0-or-later</license>
+  </extension>
+</addon><addon id="script.module.requests" name="requests" version="2.31.0" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Bundled requests stack for offline harness runtime.</summary>
+    <description lang="en_GB">Provides requests and required Python dependencies for Umbrella runtime in Kodi test harness sessions.</description>
+    <platform>all</platform>
+    <license>Apache-2.0</license>
+  </extension>
+</addon><addon id="script.module.testneto" version="6.05.02" name="TestNeto Module" provider-name="TestNeto">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.requests" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="lib/router.py">
+		<provides>executable video</provides>
+	</extension>
+	<extension point="xbmc.service" library="lib/service.py" />
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<summary>TestNeto Module</summary>
+		<description>A module to query magnet providers.[CR][CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</description>
+		<disclaimer>The author does not host or own any content found within this addon. The author is not responsible for the content found using this addon. The author is not responsible for the use of this addon.</disclaimer>
+		<assets><icon>resources/testneto.png</icon></assets>
+	</extension>
+</addon><addon id="service.aegis.firstrun" name="Aegis First Run" version="0.1.3" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+    <import addon="script.module.aegis.netguard" version="0.1.0" />
+    <import addon="script.module.aegis.vault" version="0.1.0" />
+    <import addon="script.module.aegis.tvhub" version="0.1.1" />
+  </requires>
+  <extension point="xbmc.service" library="service.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Consent and account setup flow for Aegis.</summary>
+    <description lang="en_GB">Runs once at startup to collect consent and initialize providers.</description>
+    <platform>all</platform>
+    <license>GPL-2.0-or-later</license>
+  </extension>
+</addon><addon id="skin.aegis" version="0.1.0" name="Aegis Skin" provider-name="Aegis">
+  <requires>
+    <import addon="xbmc.gui" version="5.17.0" />
+  </requires>
+  <extension point="xbmc.gui.skin" debugging="false">
+    <res width="1920" height="1440" aspect="4:3" default="false" folder="xml" />
+    <res width="1920" height="1280" aspect="3:2" default="false" folder="xml" />
+    <res width="1920" height="1200" aspect="16:10" default="false" folder="xml" />
+    <res width="2040" height="1080" aspect="17:9" default="false" folder="xml" />
+    <res width="1920" height="1080" aspect="16:9" default="true" folder="xml" />
+    <res width="2560" height="1080" aspect="21:9" default="false" folder="xml" />
+    <res width="2338" height="1080" aspect="19.5:9" default="false" folder="xml" />
+    <res width="2160" height="1080" aspect="18:9" default="false" folder="xml" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Aegis skin fork scaffold.</summary>
+    <description lang="en_GB">Starting point for the Aegis skin customizations.</description>
+    <platform>all</platform>
+    <license>GPL-2.0-only</license>
+  </extension>
+</addon></addons>
