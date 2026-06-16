@@ -6,34 +6,55 @@ Kodi 21 (Omega) addon delivery for the Aegis build. Source lives in a
 separate (private) repository; this repo carries only the signed release
 payload that Kodi pulls.
 
+## Before you start
+
+Kodi blocks installs from unknown sources by default. Turn it on once:
+**Settings → System → Add-ons → Unknown sources → On** (acknowledge the warning).
+
 ## Install
 
 **1. Add the source.**
-Kodi → Settings → File Manager → Add Source
+Settings → File Manager → Add Source → `<None>`
 - Path: `https://badger-field.github.io/aegis/`
 - Name: `aegis`
+- OK
 
-**2. Install the repository addon.**
-Settings → Add-ons → Install from zip file → `aegis` → `zips/repository.aegis/` → newest `repository.aegis-*.zip`.
+**2. Install the repository addon (one-time).**
+Settings → Add-ons → Install from zip file → `aegis` → `zips/` → `repository.aegis/` →
+`repository.aegis-0.1.0.zip`. Wait for the *Aegis Repository installed* toast.
 
-**3. Install Aegis Build.**
-Settings → Add-ons → Install from repository → Aegis Repository → Video add-ons → **Aegis Build**.
-This pulls in `netguard`, `vault`, `tvhub`, and `requests` automatically as dependencies.
+**3. Install Aegis Build from the repository.**
+Settings → Add-ons → Install from repository → **Aegis Repository** → **Video add-ons** →
+**Aegis Build** → *Install*. Kodi will prompt to install the dependencies
+(`script.module.aegis.netguard`, `script.module.aegis.vault`,
+`script.module.aegis.tvhub`, `script.module.requests`) — accept.
+Wait for the *Aegis Build installed* toast.
 
-**4. First launch.**
-Open Aegis Build from the home screen. The first-run wizard handles consent, debrid
-provider selection, and Real-Debrid OAuth — no further setup needed.
+**4. Install the first-run service.**
+Install from repository → Aegis Repository → **Services** → **Aegis First Run** → *Install*.
+This addon runs the consent + Real-Debrid OAuth wizard at Kodi startup.
 
-### Optional extras
+**5. (Optional) Install the skin.**
+Install from repository → Aegis Repository → **Look and feel** → **Skin** → **Aegis Skin** →
+*Install*. After install, Kodi asks *Switch to the new skin?* → **Yes**.
 
-Install these the same way (Install from repository → Aegis Repository → category):
-- **Aegis Skin** (`skin.aegis`) — Look & feel. Activate via Settings → Interface → Skin.
-- **Aegis First-Run Setup** (`service.aegis.firstrun`) — Re-runnable setup wizard service.
-- **Aegis TVE** (`plugin.video.aegis.tve`) — TV-Everywhere providers.
-- **Umbrella** (`plugin.video.umbrella`) — Real-Debrid scraper.
+**6. Restart Kodi.**
+Power → Exit, then relaunch. On the next startup, *Aegis First Run* triggers the
+wizard: consent → debrid provider → Real-Debrid OAuth device-flow (5-min code at
+<https://real-debrid.com/device>). After it finishes, you're done.
 
-Dependencies resolve automatically — install Aegis Build first and everything
-required to play falls in behind it.
+Launch from the home screen: **Add-ons → Video add-ons → Aegis Build**.
+
+### Optional extras (install any time, same as step 4)
+
+- **Umbrella** (`plugin.video.umbrella`) — Real-Debrid scraper. Video add-ons.
+- **Aegis TVE** (`plugin.video.aegis.tve`) — TV-Everywhere providers. Video add-ons.
+
+### Updates
+
+Settings → Add-ons → check the Aegis Repository periodically — Kodi installs new
+versions in place. Last 3 versions of each addon are retained here for
+rollback if needed.
 
 Direct link to the current repository zip: <https://badger-field.github.io/aegis/zips/repository.aegis/repository.aegis-0.1.0.zip>
 
@@ -41,6 +62,7 @@ Direct link to the current repository zip: <https://badger-field.github.io/aegis
 
 - `addons.xml` / `addons.xml.gz` — Kodi addon manifest with per-addon SHA256.
 - `zips/<addon-id>/<addon-id>-<version>.zip` — built addon payloads.
-- Last 3 versions per addon are retained for rollback.
+- `index.html` at each directory — Apache-autoindex-style listing so Kodi's HTTP vfs
+  can browse the repo (GitHub Pages doesn't auto-list directories).
 
 All zips are produced by a deterministic build from pinned upstream commits.
