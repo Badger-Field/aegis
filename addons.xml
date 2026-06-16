@@ -355,9 +355,10 @@
     <import addon="script.module.aegis.vault" />
     <import addon="script.module.aegis.netguard" />
   </requires>
-</addon><addon id="script.module.aegis.vault" name="Aegis Vault" version="0.1.1" provider-name="Aegis">
+</addon><addon id="script.module.aegis.vault" name="Aegis Vault" version="0.1.2" provider-name="Aegis">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
+    <import addon="script.module.pycryptodome" version="3.18.0" />
   </requires>
   <extension point="xbmc.python.module" library="lib" />
   <extension point="xbmc.addon.metadata">
