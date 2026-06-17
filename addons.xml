@@ -394,7 +394,7 @@
 		<disclaimer>The author does not host or own any content found within this addon. The author is not responsible for the content found using this addon. The author is not responsible for the use of this addon.</disclaimer>
 		<assets><icon>resources/testneto.png</icon></assets>
 	</extension>
-</addon><addon id="service.aegis.firstrun" name="Aegis First Run" version="0.1.5" provider-name="Aegis">
+</addon><addon id="service.aegis.firstrun" name="Aegis First Run" version="0.1.6" provider-name="Aegis">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
     <import addon="script.module.aegis.netguard" version="0.1.0" />

@@ -48,6 +48,9 @@ Launch from the home screen: **Add-ons → Video add-ons → Aegis Build**.
 ### Optional extras (install any time, same as step 4)
 
 - **Umbrella** (`plugin.video.umbrella`) — Real-Debrid scraper. Video add-ons.
+  When Umbrella is installed, the Aegis First Run service auto-installs
+  `script.module.testneto` (Umbrella's external scraper module — without it
+  Umbrella only finds streams already in your RD cache, no new discovery).
 - **Aegis TVE** (`plugin.video.aegis.tve`) — TV-Everywhere providers. Video add-ons.
 
 ### Updates
