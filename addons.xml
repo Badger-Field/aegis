@@ -284,12 +284,13 @@
 		</news>
 	</extension>
 
-</addon><addon id="repository.aegis" name="Aegis Repository" version="0.1.0" provider-name="Aegis">
+</addon><addon id="repository.aegis" name="Aegis Repository" version="0.1.1" provider-name="Aegis">
   <requires>
     <import addon="xbmc.addon" version="20.0.0" />
   </requires>
   <extension point="xbmc.addon.repository" name="Aegis Repository">
-    <dir minversion="21.0.0">
+    
+    <dir>
       <info compressed="true">https://badger-field.github.io/aegis/addons.xml.gz</info>
       <checksum>https://badger-field.github.io/aegis/addons.xml.gz.md5</checksum>
       <datadir zip="true">https://badger-field.github.io/aegis/zips/</datadir>

@@ -59,7 +59,7 @@ Settings → Add-ons → check the Aegis Repository periodically — Kodi instal
 versions in place. Last 3 versions of each addon are retained here for
 rollback if needed.
 
-Direct link to the current repository zip: <https://badger-field.github.io/aegis/zips/repository.aegis/repository.aegis-0.1.0.zip>
+Direct link to the current repository zip: <https://badger-field.github.io/aegis/zips/repository.aegis/repository.aegis-0.1.1.zip>
 
 ## What's in this repo
 
