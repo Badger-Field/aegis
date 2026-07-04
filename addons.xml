@@ -16,7 +16,7 @@
     <license>GPL-2.0-or-later</license>
     <source>https://github.com/systechs/aegis-build</source>
   </extension>
-</addon><addon id="plugin.video.aegis.tve" name="Aegis TVE" version="0.1.1" provider-name="TemplateMechanics">
+</addon><addon id="plugin.video.aegis.tve" name="Aegis TVE" version="0.1.2" provider-name="TemplateMechanics">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
     <import addon="script.module.requests" version="2.31.0" />
@@ -395,7 +395,7 @@
 		<disclaimer>The author does not host or own any content found within this addon. The author is not responsible for the content found using this addon. The author is not responsible for the use of this addon.</disclaimer>
 		<assets><icon>resources/testneto.png</icon></assets>
 	</extension>
-</addon><addon id="service.aegis.firstrun" name="Aegis First Run" version="0.1.10" provider-name="Aegis">
+</addon><addon id="service.aegis.firstrun" name="Aegis First Run" version="0.1.11" provider-name="Aegis">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
     <import addon="script.module.aegis.netguard" version="0.1.0" />
