@@ -362,7 +362,7 @@
     <import addon="script.module.aegis.vault" />
     <import addon="script.module.aegis.netguard" />
   </requires>
-</addon><addon id="script.module.aegis.vault" name="Aegis Vault" version="0.1.4" provider-name="Aegis">
+</addon><addon id="script.module.aegis.vault" name="Aegis Vault" version="0.1.5" provider-name="Aegis">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
   </requires>
