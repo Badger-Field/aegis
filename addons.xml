@@ -332,7 +332,7 @@
     <platform>all</platform>
     <license>GPL-2.0-or-later</license>
   </extension>
-</addon><addon id="script.module.aegis.proxy" name="Aegis Proxy" version="0.1.0" provider-name="Aegis">
+</addon><addon id="script.module.aegis.proxy" name="Aegis Proxy" version="0.1.1" provider-name="Aegis">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
   </requires>
